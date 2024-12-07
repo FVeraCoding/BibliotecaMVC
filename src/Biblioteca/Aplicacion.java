@@ -10,12 +10,13 @@ import java.util.logging.Logger;
 
 public class Aplicacion {
     public static void main(String[] args) {
-        try {
-            Usuario usuario = new Usuario(1, "Martin", "1234", "usuario");
-            
+        try {            
             UsuarioDAO u = new UsuarioDAO();
             
-            u.create(usuario);
+            Usuario us = new Usuario(1, "Martini", "1234", "Usuario");
+            u.update(us);
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(Aplicacion.class.getName()).log(Level.SEVERE, null, ex);
         }

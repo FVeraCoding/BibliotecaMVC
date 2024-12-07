@@ -14,6 +14,12 @@ public class Usuario {
         this.password = password;
         this.rol = rol;
     }
+    
+    public Usuario(String nombreUsuario, String password, String rol) {
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.rol = rol;
+    }
 
     public int getId() {
         return id;
@@ -46,6 +52,13 @@ public class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+    @Override
+    public String toString() {
+        return "ID: "+this.id+" | Nombre: "+this.nombreUsuario+" | Password: "+this.password+" | Rol: "+this.rol;
+    }
+    
+    
     
     
 }
