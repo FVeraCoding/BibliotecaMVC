@@ -8,12 +8,12 @@ package Vista;
  *
  * @author Fernando
  */
-public class PantallaPrincipalUsuario extends javax.swing.JFrame {
+public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
     LoginVista login = new LoginVista();
     
     
-    public PantallaPrincipalUsuario() {
+    public PantallaPrincipalSocio() {
         initComponents();
         
     }
@@ -314,20 +314,21 @@ public class PantallaPrincipalUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaPrincipalUsuario().setVisible(true);
+                new PantallaPrincipalSocio().setVisible(true);
             }
         });
     }

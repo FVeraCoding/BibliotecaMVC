@@ -6,10 +6,7 @@ package Vista;
 
 import Controlador.Login.LoginUsuarioController;
 import Modelo.Clases.Usuario;
-import Modelo.ClasesDAO.UsuarioDAO;
-import Vista.PantallaPrincipalUsuario;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,13 +16,14 @@ import java.util.logging.Logger;
  */
 public class LoginVista extends javax.swing.JFrame {
 
-    LoginUsuarioController controlador = new LoginUsuarioController();
+    LoginUsuarioController controlador;
 
     /**
      * Creates new form LoginVista
      */
     public LoginVista() {
         initComponents();
+        controlador = new LoginUsuarioController(this);
     }
 
     /**
@@ -107,8 +105,18 @@ public class LoginVista extends javax.swing.JFrame {
         return usuario;
     }
 
-    public void abrirPantallaUsuario() {
-        PantallaPrincipalUsuario pantalla = new PantallaPrincipalUsuario();
+    public void abrirPantallaSocio() {
+        PantallaPrincipalSocio pantalla = new PantallaPrincipalSocio();
+        pantalla.setVisible(true);
+    }
+    
+    public void abrirPantallaEmpleado() {
+        PantallaPrincipalEmpleado pantalla = new PantallaPrincipalEmpleado();
+        pantalla.setVisible(true);
+    }
+    
+    public void abrirPantallaAdministrador(){
+        PantallaPrincipalAdministrador pantalla = new PantallaPrincipalAdministrador();
         pantalla.setVisible(true);
     }
 
