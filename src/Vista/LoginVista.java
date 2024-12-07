@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.Login.LoginUsuarioController;
 import Modelo.Clases.Usuario;
 import Modelo.ClasesDAO.UsuarioDAO;
 import Vista.PantallaPrincipalUsuario;
@@ -17,6 +18,8 @@ import java.util.logging.Logger;
  * @author Fernando
  */
 public class LoginVista extends javax.swing.JFrame {
+
+    LoginUsuarioController controlador = new LoginUsuarioController();
 
     /**
      * Creates new form LoginVista
@@ -91,37 +94,27 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginEntrarActionPerformed
+
         try {
-
-            UsuarioDAO uDAO = new UsuarioDAO();
-            ArrayList<Usuario> usuarios = uDAO.obtenerTodos();
-
-            boolean autenticado = false;
-
-            for (Usuario usuario : usuarios) {
-                if (usuario.getNombreUsuario().equalsIgnoreCase(jTextFieldLoginUsuario.getText())
-                        && usuario.getPassword().equals(jPasswordFieldLogin.getText())) {
-
-                    if (usuario.getRol().equals("Usuario")) {
-                        PantallaPrincipalUsuario pantallaPrincipalUsuario = new PantallaPrincipalUsuario();
-                        pantallaPrincipalUsuario.setVisible(true);
-                        this.dispose(); 
-                        autenticado = true;
-                        break; 
-                    }
-                }
-            }
-
-            
-            if (!autenticado) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", javax.swing.JOptionPane.ERROR_MESSAGE);
-            }
-
+            controlador.loginUsuario();
         } catch (SQLException ex) {
             Logger.getLogger(LoginVista.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jButtonLoginEntrarActionPerformed
+
+    public Usuario usuarioLogueado() {
+        Usuario usuario = new Usuario(jTextFieldLoginUsuario.getText(), jPasswordFieldLogin.getText());
+        return usuario;
+    }
+
+    public void abrirPantallaUsuario() {
+        PantallaPrincipalUsuario pantalla = new PantallaPrincipalUsuario();
+        pantalla.setVisible(true);
+    }
+
+    public void mensajeError() {
+        javax.swing.JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
 
     private void jPasswordFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldLoginActionPerformed
         // TODO add your handling code here:
