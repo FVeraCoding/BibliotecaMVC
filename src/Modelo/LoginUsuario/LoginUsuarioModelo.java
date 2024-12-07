@@ -1,4 +1,4 @@
-package Modelo.Login;
+package Modelo.LoginUsuario;
 
 import Modelo.Clases.Usuario;
 import Modelo.ClasesDAO.UsuarioDAO;
@@ -17,8 +17,6 @@ public class LoginUsuarioModelo {
             if (usuario.getNombreUsuario().equalsIgnoreCase(usuarioLogueado.getNombreUsuario())
                     && usuario.getPassword().equals(usuarioLogueado.getPassword())) {
 
-                
-                
                 switch (usuario.getRol()) {
                     case "Socio":
                         return 1;
@@ -28,11 +26,26 @@ public class LoginUsuarioModelo {
                         return 3;
                     default:
                         return -1;
-                }          
+                }
             }
         }
 
         return -1;
+    }
+
+    public Usuario usuarioLogueadoInfo(Usuario usuario) throws SQLException {
+        UsuarioDAO uDAO = new UsuarioDAO();
+        ArrayList<Usuario> usuarios = uDAO.obtenerTodos();
+
+        for (Usuario usuarioLog : usuarios) {
+            if (usuarioLog.getNombreUsuario().equalsIgnoreCase(usuario.getNombreUsuario())
+                    && usuarioLog.getPassword().equals(usuario.getPassword())) {
+
+                return usuarioLog;
+            }
+        }
+
+        return null;
     }
 
 }

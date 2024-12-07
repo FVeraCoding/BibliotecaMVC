@@ -1,7 +1,7 @@
 package Controlador.Login;
 
 import Modelo.Clases.Usuario;
-import Modelo.Login.LoginUsuarioModelo;
+import Modelo.LoginUsuario.LoginUsuarioModelo;
 import Vista.LoginVista;
 import java.sql.SQLException;
 
@@ -9,7 +9,6 @@ public class LoginUsuarioController {
 
     LoginVista loginVista;
     LoginUsuarioModelo loginUsuarioModelo;
-    int idUsuarioLogueado;
 
     public LoginUsuarioController(LoginVista lv) {
         this.loginVista = lv;
@@ -18,14 +17,32 @@ public class LoginUsuarioController {
 
     public void loginUsuario() throws SQLException {
         Usuario usuarioLogueado = loginVista.usuarioLogueado();
-        if (loginUsuarioModelo.verificarLogueo(usuarioLogueado) == 1) {
-            loginVista.abrirPantallaSocio();
-        } else if (loginUsuarioModelo.verificarLogueo(usuarioLogueado) == 2) {
-            loginVista.abrirPantallaEmpleado();
-        } else if (loginUsuarioModelo.verificarLogueo(usuarioLogueado) == 3) {
-            loginVista.abrirPantallaAdministrador();
+
+        switch (loginUsuarioModelo.verificarLogueo(usuarioLogueado)) {
+            case 1:
+                loginVista.abrirPantallaSocio(this.usuarioLogueado());
+                break;
+            case 2:
+                loginVista.abrirPantallaEmpleado();
+                break;
+            case 3:
+                loginVista.abrirPantallaAdministrador();
+                break;
+            default:
+                loginVista.mensajeError();
+                break;
+        }
+    }
+
+    public Usuario usuarioLogueado() throws SQLException {
+        Usuario usuarioLogueado = loginVista.usuarioLogueado();
+        usuarioLogueado = loginUsuarioModelo.usuarioLogueadoInfo(usuarioLogueado);
+
+        if (usuarioLogueado != null) {
+            return usuarioLogueado;
+
         } else {
-            loginVista.mensajeError();
+            return null;
         }
     }
 }

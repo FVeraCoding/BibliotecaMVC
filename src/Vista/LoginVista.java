@@ -37,7 +37,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         jTextFieldLoginUsuario = new javax.swing.JTextField();
         jButtonLoginEntrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelInicioSesion = new javax.swing.JLabel();
         jPasswordFieldLogin = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,8 +49,8 @@ public class LoginVista extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Inicio de Sesión");
+        jLabelInicioSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelInicioSesion.setText("Inicio de Sesión");
 
         jPasswordFieldLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +64,7 @@ public class LoginVista extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(121, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelInicioSesion)
                 .addGap(113, 113, 113))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -78,7 +78,7 @@ public class LoginVista extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel1)
+                .addComponent(jLabelInicioSesion)
                 .addGap(56, 56, 56)
                 .addComponent(jTextFieldLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -95,6 +95,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         try {
             controlador.loginUsuario();
+            
         } catch (SQLException ex) {
             Logger.getLogger(LoginVista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -105,8 +106,8 @@ public class LoginVista extends javax.swing.JFrame {
         return usuario;
     }
 
-    public void abrirPantallaSocio() {
-        PantallaPrincipalSocio pantalla = new PantallaPrincipalSocio();
+    public void abrirPantallaSocio(Usuario usuario) {
+        PantallaPrincipalSocio pantalla = new PantallaPrincipalSocio(usuario);
         pantalla.setVisible(true);
     }
     
@@ -165,7 +166,7 @@ public class LoginVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLoginEntrar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelInicioSesion;
     private javax.swing.JPasswordField jPasswordFieldLogin;
     private javax.swing.JTextField jTextFieldLoginUsuario;
     // End of variables declaration//GEN-END:variables

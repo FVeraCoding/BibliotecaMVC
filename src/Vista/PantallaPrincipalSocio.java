@@ -4,6 +4,11 @@
  */
 package Vista;
 
+import Modelo.Clases.Usuario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Fernando
@@ -13,9 +18,10 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
     LoginVista login = new LoginVista();
     
     
-    public PantallaPrincipalSocio() {
+    public PantallaPrincipalSocio(Usuario usuarioLogueado) {
         initComponents();
-        
+        System.out.println(usuarioLogueado.toString());
+        jLabelBienvenida.setText("Bienvenido a la aplicación, "+ usuarioLogueado.getNombreUsuario());
     }
 
     /**
@@ -27,40 +33,41 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelBienvenida = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelLibro1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelLibro2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelLibro3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelLibro4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabelLibro5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelLibro6 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuLibros = new javax.swing.JMenu();
+        jMenuItemBuscarLibro = new javax.swing.JMenuItem();
+        jMenuEventos = new javax.swing.JMenu();
+        jMenuClub = new javax.swing.JMenu();
+        jMenuReservas = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Bienvenido a la Aplicación, NombreUsuario");
+        jLabelBienvenida.setText("Bienvenido a la Aplicación");
 
         jPanel1.setLayout(new java.awt.GridLayout(2, 3, 100, 100));
 
-        jLabel4.setText("Titulo");
+        jLabelLibro1.setText("Titulo");
 
         jTextField1.setText("Imagen");
 
@@ -75,14 +82,14 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(jLabelLibro1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -90,7 +97,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2);
 
-        jLabel5.setText("Titulo");
+        jLabelLibro2.setText("Titulo");
 
         jTextField2.setText("Imagen");
 
@@ -105,14 +112,14 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(jLabelLibro2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -120,7 +127,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6);
 
-        jLabel6.setText("Titulo");
+        jLabelLibro3.setText("Titulo");
 
         jTextField3.setText("Imagen");
 
@@ -135,14 +142,14 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLibro3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(jLabelLibro3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -150,7 +157,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5);
 
-        jLabel7.setText("Titulo");
+        jLabelLibro4.setText("Titulo");
 
         jTextField4.setText("Imagen");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -170,14 +177,14 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLibro4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(jLabelLibro4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -185,7 +192,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4);
 
-        jLabel8.setText("Titulo");
+        jLabelLibro5.setText("Titulo");
 
         jTextField5.setText("Imagen");
 
@@ -200,14 +207,14 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLibro5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
+                .addComponent(jLabelLibro5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -215,7 +222,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3);
 
-        jLabel9.setText("Titulo");
+        jLabelLibro6.setText("Titulo");
 
         jTextField6.setText("Imagen");
 
@@ -230,14 +237,14 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLibro6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(jLabelLibro6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -247,17 +254,26 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jLabel3.setText("Novedades");
 
-        jMenu1.setText("Libros");
-        jMenuBar1.add(jMenu1);
+        jMenuLibros.setText("Libros");
 
-        jMenu2.setText("Eventos");
-        jMenuBar1.add(jMenu2);
+        jMenuItemBuscarLibro.setText("Buscar");
+        jMenuItemBuscarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBuscarLibroActionPerformed(evt);
+            }
+        });
+        jMenuLibros.add(jMenuItemBuscarLibro);
 
-        jMenu3.setText("Club de Lectura");
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuLibros);
 
-        jMenu4.setText("Reservas");
-        jMenuBar1.add(jMenu4);
+        jMenuEventos.setText("Eventos");
+        jMenuBar1.add(jMenuEventos);
+
+        jMenuClub.setText("Club de Lectura");
+        jMenuBar1.add(jMenuClub);
+
+        jMenuReservas.setText("Reservas");
+        jMenuBar1.add(jMenuReservas);
 
         setJMenuBar(jMenuBar1);
 
@@ -271,7 +287,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(220, 220, 220))
             .addGroup(layout.createSequentialGroup()
                 .addGap(307, 307, 307)
@@ -282,7 +298,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(jLabelBienvenida)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel3)
                 .addGap(37, 37, 37)
@@ -297,56 +313,32 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void jMenuItemBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarLibroActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            BuscarLibrosVista buscarLibros = new BuscarLibrosVista();
+            buscarLibros.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_jMenuItemBuscarLibroActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaPrincipalSocio().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JLabel jLabelBienvenida;
+    private javax.swing.JLabel jLabelLibro1;
+    private javax.swing.JLabel jLabelLibro2;
+    private javax.swing.JLabel jLabelLibro3;
+    private javax.swing.JLabel jLabelLibro4;
+    private javax.swing.JLabel jLabelLibro5;
+    private javax.swing.JLabel jLabelLibro6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuClub;
+    private javax.swing.JMenu jMenuEventos;
+    private javax.swing.JMenuItem jMenuItemBuscarLibro;
+    private javax.swing.JMenu jMenuLibros;
+    private javax.swing.JMenu jMenuReservas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
