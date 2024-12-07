@@ -4,6 +4,14 @@
  */
 package Vista;
 
+import Modelo.Clases.Usuario;
+import Modelo.ClasesDAO.UsuarioDAO;
+import Vista.PantallaPrincipalUsuario;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Fernando
@@ -27,9 +35,9 @@ public class LoginVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextFieldLoginUsuario = new javax.swing.JTextField();
-        jTextFieldLoginPassword = new javax.swing.JTextField();
         jButtonLoginEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPasswordFieldLogin = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,21 +51,27 @@ public class LoginVista extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Inicio de Sesión");
 
+        jPasswordFieldLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldLoginUsuario)
-                    .addComponent(jTextFieldLoginPassword)
-                    .addComponent(jButtonLoginEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(113, 113, 113))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldLoginUsuario)
+                    .addComponent(jButtonLoginEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(jPasswordFieldLogin))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,9 +80,9 @@ public class LoginVista extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(56, 56, 56)
                 .addComponent(jTextFieldLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldLoginPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(26, 26, 26)
+                .addComponent(jPasswordFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jButtonLoginEntrar)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
@@ -77,8 +91,41 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginEntrarActionPerformed
-        // TODO add your handling code here:
+        try {
+
+            UsuarioDAO uDAO = new UsuarioDAO();
+            ArrayList<Usuario> usuarios = uDAO.obtenerTodos();
+
+            boolean autenticado = false;
+
+            for (Usuario usuario : usuarios) {
+                if (usuario.getNombreUsuario().equalsIgnoreCase(jTextFieldLoginUsuario.getText())
+                        && usuario.getPassword().equals(jPasswordFieldLogin.getText())) {
+
+                    if (usuario.getRol().equals("Usuario")) {
+                        PantallaPrincipalUsuario pantallaPrincipalUsuario = new PantallaPrincipalUsuario();
+                        pantallaPrincipalUsuario.setVisible(true);
+                        this.dispose(); 
+                        autenticado = true;
+                        break; 
+                    }
+                }
+            }
+
+            
+            if (!autenticado) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButtonLoginEntrarActionPerformed
+
+    private void jPasswordFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,7 +165,7 @@ public class LoginVista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLoginEntrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextFieldLoginPassword;
+    private javax.swing.JPasswordField jPasswordFieldLogin;
     private javax.swing.JTextField jTextFieldLoginUsuario;
     // End of variables declaration//GEN-END:variables
 }

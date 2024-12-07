@@ -13,7 +13,7 @@ public class Aplicacion {
         try {            
             UsuarioDAO u = new UsuarioDAO();
             
-            Usuario us = new Usuario(1, "Martini", "1234", "Usuario");
+            Usuario us = new Usuario(1, "Martin", "1234", "Usuario");
             u.update(us);
             
             

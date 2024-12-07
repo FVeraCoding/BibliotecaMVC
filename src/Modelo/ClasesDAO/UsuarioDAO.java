@@ -4,6 +4,7 @@ package Modelo.ClasesDAO;
 import Modelo.Clases.Usuario;
 import Modelo.Conexion.ConexionBD;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class UsuarioDAO {
@@ -67,5 +68,28 @@ public class UsuarioDAO {
         pSentencia.setInt(1, clave);
         
         pSentencia.executeUpdate();
+    }
+    
+    public ArrayList<Usuario> obtenerTodos() throws SQLException{
+        ArrayList<Usuario> usuariosTodos = new ArrayList<Usuario>();
+        PreparedStatement pSentencia = con.prepareStatement("SELECT * FROM USUARIO");
+        ResultSet rs = pSentencia.executeQuery();
+        
+        int id = 0;
+        String nombreUsuario = "";
+        String password = "";
+        String rol = "";
+        
+        while(rs.next()){
+            id = rs.getInt("id");
+            nombreUsuario = rs.getString("nombre_usuario");
+            password = rs.getString("contraseña");
+            rol = rs.getString("rol");
+            
+            Usuario usuario = new Usuario(id, nombreUsuario, password, rol);
+            usuariosTodos.add(usuario);
+        }
+        
+        return usuariosTodos;
     }
 }
