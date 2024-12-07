@@ -15,6 +15,8 @@ public class PantallaPrincipalAdministrador extends javax.swing.JFrame {
      */
     public PantallaPrincipalAdministrador() {
         initComponents();
+                        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 
     /**

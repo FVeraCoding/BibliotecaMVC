@@ -12,6 +12,8 @@ public class ReservaVista extends javax.swing.JFrame {
     public ReservaVista(Libro libroSeleccionado) {
         this.libro = libroSeleccionado;
         initComponents();
+                        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
         mostrarInformacionLibro();
     }
 

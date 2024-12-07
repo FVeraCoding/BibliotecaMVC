@@ -5,10 +5,15 @@
 package Vista;
 
 import Controlador.Libros.LibrosController;
+import Modelo.Clases.Ejemplar;
 import Modelo.Clases.Libro;
+import Modelo.ClasesDAO.EjemplarDAO;
 import Tablemodels.LibroTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -19,10 +24,12 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
 
     private TableRowSorter<LibroTableModel> sorter;
     LibrosController controlador = new LibrosController(this);
-    
+
     public BuscarLibrosVista() throws SQLException {
         initComponents();
         controlador.inicializarTabla();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 
     /**
@@ -83,6 +90,11 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
         });
 
         jButtonReserva.setText("Reserva");
+        jButtonReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReservaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,24 +148,52 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldBusquedaActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-                                       
-    String textoBusqueda = jTextFieldBusqueda.getText();
-    
-    if (sorter != null) {
-        if (textoBusqueda.isEmpty()) {
-            sorter.setRowFilter(null);
-        } else {
-            sorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + textoBusqueda, 0));
+
+        String textoBusqueda = jTextFieldBusqueda.getText();
+
+        if (sorter != null) {
+            if (textoBusqueda.isEmpty()) {
+                sorter.setRowFilter(null);
+            } else {
+                sorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + textoBusqueda, 0));
+            }
         }
-    }
 
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    
-    public void actualizarTabla(ArrayList<Libro> listaLibros){
-       LibroTableModel tableModel = new LibroTableModel(listaLibros);
-       jTableLibros.setModel(tableModel);
-       
+    private void jButtonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservaActionPerformed
+
+        libroSeleccionado();
+        try {
+            ReservarEjemplarVista ejemplarVista = new ReservarEjemplarVista(libroSeleccionado().getId(), this);
+            ejemplarVista.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarLibrosVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonReservaActionPerformed
+
+    public Libro libroSeleccionado() {
+    int selectedRow = jTableLibros.getSelectedRow();
+
+    if (selectedRow != -1) {
+        // Obtener el libro seleccionado
+        Libro libroSeleccionado = ((LibroTableModel) jTableLibros.getModel()).getLibroEnFila(selectedRow);
+        
+        System.out.println(libroSeleccionado.toString()); 
+        
+        return libroSeleccionado;  // Devolver el libro seleccionado
+    } else {
+        // Mostrar un mensaje si no hay libro seleccionado
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un libro primero.");
+        return null;  // Devolver null si no hay libro seleccionado
+    }
+}
+
+
+    public void actualizarTabla(ArrayList<Libro> listaLibros) {
+        LibroTableModel tableModel = new LibroTableModel(listaLibros);
+        jTableLibros.setModel(tableModel);
+
         this.sorter = new TableRowSorter<>(tableModel);
         jTableLibros.setRowSorter(sorter);
     }

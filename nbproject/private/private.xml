@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/PantallaPrincipalEmpleado.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/PantallaPrincipalSocio.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Controlador/Ejemplar/EjemplarController.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Controlador/Libros/LibrosController.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Modelo/ClasesDAO/EjemplarDAO.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Modelo/Clases/Sucursal.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/BuscarLibrosVista.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/LoginVista.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/PantallaPrincipalAdministrador.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/TableModels/LibroTableModel.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/TableModels/EjemplarTableModel.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/ReservarEjemplarVista.java</file>
         </group>
     </open-files>
 </project-private>

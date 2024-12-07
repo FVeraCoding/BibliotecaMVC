@@ -17,7 +17,6 @@ public class LibrosController {
         lDAO = new LibroDAO();
     }
     
-    
     public void inicializarTabla() throws SQLException{
         ArrayList<Libro> listaLibros = lDAO.obtenerTodos();
         vistaLibros.actualizarTabla(listaLibros); 

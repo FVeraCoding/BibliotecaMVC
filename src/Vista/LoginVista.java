@@ -24,6 +24,8 @@ public class LoginVista extends javax.swing.JFrame {
     public LoginVista() {
         initComponents();
         controlador = new LoginUsuarioController(this);
+                        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 
     /**

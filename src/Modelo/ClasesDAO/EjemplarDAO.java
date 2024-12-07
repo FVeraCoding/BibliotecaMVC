@@ -95,4 +95,27 @@ public class EjemplarDAO {
 
         return listaEjemplares;
     }
+
+    public ArrayList<Ejemplar> obtenerEjemplaresPorLibro(int idLibro) throws SQLException {
+        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
+
+        String query = "SELECT * FROM Ejemplar WHERE id_libro = ?";
+
+        PreparedStatement pst = con.prepareStatement(query);
+            
+        pst.setInt(1, idLibro);
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            Ejemplar ejemplar = new Ejemplar(
+                    rs.getInt("id"),
+                    rs.getString("estado"),
+                    rs.getInt("id_sucursal"),
+                    rs.getInt("id_libro")
+            );
+            ejemplares.add(ejemplar);
+        }
+            return ejemplares ;
+    }
 }
+

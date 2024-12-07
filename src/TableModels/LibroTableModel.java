@@ -12,16 +12,19 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Fernando
  */
-public class LibroTableModel extends AbstractTableModel{
+public class LibroTableModel extends AbstractTableModel {
 
     private List<Libro> listaLibros;
     private String[] columnas = {"Titulo", "Autor", "Editorial", "Genero", "ISBN", "Año"};
-    
-    public LibroTableModel(List<Libro> listaLibros){
+
+    public LibroTableModel(List<Libro> listaLibros) {
         this.listaLibros = listaLibros;
     }
-    
-    
+
+    public Libro getLibroEnFila(int rowIndex) {
+        return listaLibros.get(rowIndex);
+    }
+
     @Override
     public int getRowCount() {
         return listaLibros.size();
@@ -34,22 +37,22 @@ public class LibroTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(columnIndex){
-            case 0: 
+        switch (columnIndex) {
+            case 0:
                 return listaLibros.get(rowIndex).getTitulo();
-                
-            case 1: 
+
+            case 1:
                 return listaLibros.get(rowIndex).getAutor();
-                
-            case 2: 
+
+            case 2:
                 return listaLibros.get(rowIndex).getEditorial();
-                
+
             case 3:
                 return listaLibros.get(rowIndex).getGenero();
-                
+
             case 4:
                 return listaLibros.get(rowIndex).getISBN();
-                
+
             case 5:
                 return listaLibros.get(rowIndex).getAnio_publicacion();
         }
@@ -58,8 +61,7 @@ public class LibroTableModel extends AbstractTableModel{
 
     @Override
     public String getColumnName(int column) {
-        return columnas[column];   
+        return columnas[column];
     }
 
-    
 }

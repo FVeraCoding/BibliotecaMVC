@@ -15,6 +15,8 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
      */
     public PantallaPrincipalEmpleado() {
         initComponents();
+                        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 
     /**

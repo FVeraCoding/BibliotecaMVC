@@ -86,6 +86,11 @@ public class Sucursal {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
+
+    @Override
+    public String toString() {
+        return "Sucursal{" + "id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", horaApertura=" + horaApertura + ", horaCierre=" + horaCierre + ", capacidad=" + capacidad + '}';
+    }
     
     
     

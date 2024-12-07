@@ -22,6 +22,8 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         initComponents();
         System.out.println(usuarioLogueado.toString());
         jLabelBienvenida.setText("Bienvenido a la aplicación, "+ usuarioLogueado.getNombreUsuario());
+                        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 
     /**
