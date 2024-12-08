@@ -40,7 +40,7 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemClubs = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -74,8 +74,13 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
 
         jMenu3.setText("Club de Lectura");
 
-        jMenuItem2.setText("Buscar");
-        jMenu3.add(jMenuItem2);
+        jMenuItemClubs.setText("Buscar");
+        jMenuItemClubs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClubsActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemClubs);
 
         jMenuBar1.add(jMenu3);
 
@@ -127,6 +132,15 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItemClubsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClubsActionPerformed
+        try {
+            ClubVistaEmp clubVista = new ClubVistaEmp(usuarioLogueado);
+            clubVista.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipalEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItemClubsActionPerformed
+
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -136,8 +150,8 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemClubs;
     private javax.swing.JMenuItem jMenuItemVerLibros;
     // End of variables declaration//GEN-END:variables
 }

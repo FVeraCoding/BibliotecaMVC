@@ -25,9 +25,6 @@ public class LoginUsuarioController {
             case 2:
                 loginVista.abrirPantallaEmpleado(this.usuarioLogueado());
                 break;
-            case 3:
-                loginVista.abrirPantallaAdministrador();
-                break;
             default:
                 loginVista.mensajeError();
                 break;

@@ -70,6 +70,12 @@ public class AddLibroVista extends javax.swing.JFrame {
 
         jLabel6.setText("ISBN");
 
+        jTextFieldYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldYearActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Año");
 
         jButtonAñadir.setText("Añadir");
@@ -179,6 +185,10 @@ public class AddLibroVista extends javax.swing.JFrame {
             Logger.getLogger(AddLibroVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonAñadirActionPerformed
+
+    private void jTextFieldYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldYearActionPerformed
 
     public Libro nuevoLibro(BuscarLibrosVistaEmp vista) throws SQLException {
         this.vista = vista;

@@ -16,7 +16,7 @@ public class ClubDAO {
     }
 
     public boolean create(Club club) throws SQLException {
-        PreparedStatement pSentencia = con.prepareStatement("INSERT INTO Club(nombre, descripcion, fecha_creacion, id_empleado gestion ) VALUES (?, ?, ?, ?)");
+        PreparedStatement pSentencia = con.prepareStatement("INSERT INTO Club(nombre, descripcion, fecha_creacion, id_empleado_gestion ) VALUES (?, ?, ?, ?)");
 
         pSentencia.setString(1, club.getNombre());
         pSentencia.setString(2, club.getDescripcion());

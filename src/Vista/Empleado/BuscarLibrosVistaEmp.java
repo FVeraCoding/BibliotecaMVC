@@ -51,6 +51,7 @@ public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
         jButtonBuscar = new javax.swing.JButton();
         jButtonAñadirLibro = new javax.swing.JButton();
         jButtonEliminarLibro = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +107,13 @@ public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ver ejemplares");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,7 +142,8 @@ public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
                 .addComponent(jButtonAñadirLibro)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonEliminarLibro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +160,8 @@ public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAñadirLibro)
-                    .addComponent(jButtonEliminarLibro))
+                    .addComponent(jButtonEliminarLibro)
+                    .addComponent(jButton1))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -194,6 +204,17 @@ public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAñadirLibroActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        libroSeleccionado();
+        try {
+            ReservarEjemplarVistaEmp ejemplarVista = new ReservarEjemplarVistaEmp(libroSeleccionado().getId(), this, this.usuarioLogueado);
+            ejemplarVista.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarLibrosVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public Libro libroSeleccionado() {
     int selectedRow = jTableLibros.getSelectedRow();
 
@@ -221,6 +242,7 @@ public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAñadirLibro;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminarLibro;

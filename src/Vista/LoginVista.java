@@ -138,10 +138,7 @@ public class LoginVista extends javax.swing.JFrame {
         pantalla.setVisible(true);
     }
 
-    public void abrirPantallaAdministrador() {
-        PantallaPrincipalAdministrador pantalla = new PantallaPrincipalAdministrador();
-        pantalla.setVisible(true);
-    }
+    
 
     public void mensajeError() {
         javax.swing.JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", javax.swing.JOptionPane.ERROR_MESSAGE);
