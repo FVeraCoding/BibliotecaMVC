@@ -18,11 +18,11 @@ public class LoginUsuarioModelo {
                     && usuario.getPassword().equals(usuarioLogueado.getPassword())) {
 
                 switch (usuario.getRol()) {
-                    case "Socio":
+                    case "socio":
                         return 1;
-                    case "Empleado":
+                    case "empleado":
                         return 2;
-                    case "Administrador":
+                    case "administrador":
                         return 3;
                     default:
                         return -1;

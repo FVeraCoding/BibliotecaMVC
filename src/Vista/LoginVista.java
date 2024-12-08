@@ -24,7 +24,7 @@ public class LoginVista extends javax.swing.JFrame {
     public LoginVista() {
         initComponents();
         controlador = new LoginUsuarioController(this);
-                        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     }
 
@@ -97,7 +97,7 @@ public class LoginVista extends javax.swing.JFrame {
 
         try {
             controlador.loginUsuario();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(LoginVista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -112,13 +112,13 @@ public class LoginVista extends javax.swing.JFrame {
         PantallaPrincipalSocio pantalla = new PantallaPrincipalSocio(usuario);
         pantalla.setVisible(true);
     }
-    
+
     public void abrirPantallaEmpleado() {
         PantallaPrincipalEmpleado pantalla = new PantallaPrincipalEmpleado();
         pantalla.setVisible(true);
     }
-    
-    public void abrirPantallaAdministrador(){
+
+    public void abrirPantallaAdministrador() {
         PantallaPrincipalAdministrador pantalla = new PantallaPrincipalAdministrador();
         pantalla.setVisible(true);
     }

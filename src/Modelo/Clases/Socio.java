@@ -10,13 +10,15 @@ public class Socio {
     String apellidos;
     Date fecha_nacimiento;
     String correo_electronico;
-    int telefono;
+    String telefono;
     String direccion;
     Date fecha_alta;
     int id_usuario;
     int id_club;
 
-    public Socio(String nombre, String apellidos, Date fecha_nacimiento, String correo_electronico, int telefono, String direccion, int id_usuario, int id_club) {
+    
+    
+    public Socio(String nombre, String apellidos, Date fecha_nacimiento, String correo_electronico, String telefono, String direccion, int id_usuario, int id_club) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fecha_nacimiento = fecha_nacimiento;
@@ -26,6 +28,21 @@ public class Socio {
         this.id_usuario = id_usuario;
         this.id_club = id_club;
     }
+
+    public Socio(int id, String nombre, String apellidos, Date fecha_nacimiento, String correo_electronico, String telefono, String direccion, Date fecha_alta, int id_usuario, int id_club) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.correo_electronico = correo_electronico;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.fecha_alta = fecha_alta;
+        this.id_usuario = id_usuario;
+        this.id_club = id_club;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -67,11 +84,11 @@ public class Socio {
         this.correo_electronico = correo_electronico;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

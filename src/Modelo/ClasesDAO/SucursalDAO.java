@@ -20,7 +20,7 @@ public class SucursalDAO {
 
         pSentencia.setString(1, sucursal.getNombre());
         pSentencia.setString(2, sucursal.getDireccion());
-        pSentencia.setInt(3, sucursal.getTelefono());
+        pSentencia.setString(3, sucursal.getTelefono());
         pSentencia.setTime(4, sucursal.getHoraApertura());
         pSentencia.setTime(5, sucursal.getHoraCierre());
         pSentencia.setInt(6, sucursal.getCapacidad());
@@ -37,7 +37,7 @@ public class SucursalDAO {
         int id = 0;
         String nombre = "";
         String direccion = "";
-        int telefono = 0;
+        String telefono = "";
         Time hora_apertura = null;
         Time hora_cierre = null;
         int capacidad = 0;
@@ -50,7 +50,7 @@ public class SucursalDAO {
             id = rs.getInt("id");
             nombre = rs.getString("nombre");
             direccion = rs.getString("direccion");
-            telefono = rs.getInt("telefono");
+            telefono = rs.getString("telefono");
             hora_apertura = rs.getTime("hora_apertura");
             hora_cierre = rs.getTime("hora_cierre");
             capacidad = rs.getInt("capacidad");
@@ -65,7 +65,7 @@ public class SucursalDAO {
 
         pSentencia.setString(1, sucursal.getNombre());
         pSentencia.setString(2, sucursal.getDireccion());
-        pSentencia.setInt(3, sucursal.getTelefono());
+        pSentencia.setString(3, sucursal.getTelefono());
         pSentencia.setTime(4, sucursal.getHoraApertura());
         pSentencia.setTime(5, sucursal.getHoraCierre());
         pSentencia.setInt(6, sucursal.getCapacidad());
@@ -89,7 +89,7 @@ public class SucursalDAO {
         int id = 0;
         String nombre = "";
         String direccion = "";
-        int telefono = 0;
+        String telefono = "";
         Time hora_apertura = null;
         Time hora_cierre = null;
         int capacidad = 0;
@@ -100,7 +100,7 @@ public class SucursalDAO {
             id = rs.getInt("id");
             nombre = rs.getString("nombre");
             direccion = rs.getString("direccion");
-            telefono = rs.getInt("telefono");
+            telefono = rs.getString("telefono");
             hora_apertura = rs.getTime("hora_apertura");
             hora_cierre = rs.getTime("hora_cierre");
             capacidad = rs.getInt("capacidad");

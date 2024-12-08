@@ -5,9 +5,8 @@
 package Vista;
 
 import Controlador.Libros.LibrosController;
-import Modelo.Clases.Ejemplar;
 import Modelo.Clases.Libro;
-import Modelo.ClasesDAO.EjemplarDAO;
+import Modelo.Clases.Usuario;
 import Tablemodels.LibroTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,10 +23,12 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
 
     private TableRowSorter<LibroTableModel> sorter;
     LibrosController controlador = new LibrosController(this);
+    Usuario usuarioLogueado;
 
-    public BuscarLibrosVista() throws SQLException {
+    public BuscarLibrosVista(Usuario usuarioLogueado) throws SQLException {
         initComponents();
         controlador.inicializarTabla();
+        this.usuarioLogueado = usuarioLogueado;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     }
@@ -165,7 +166,7 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
 
         libroSeleccionado();
         try {
-            ReservarEjemplarVista ejemplarVista = new ReservarEjemplarVista(libroSeleccionado().getId(), this);
+            ReservarEjemplarVista ejemplarVista = new ReservarEjemplarVista(libroSeleccionado().getId(), this, this.usuarioLogueado);
             ejemplarVista.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(BuscarLibrosVista.class.getName()).log(Level.SEVERE, null, ex);

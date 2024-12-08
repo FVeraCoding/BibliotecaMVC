@@ -7,12 +7,12 @@ public class Sucursal {
     int id;
     String nombre;
     String direccion;
-    int telefono;
+    String telefono;
     Time horaApertura;
     Time horaCierre;
     int capacidad;
 
-    public Sucursal(String nombre, String direccion, int telefono, Time horaApertura, Time horaCierre, int capacidad) {
+    public Sucursal(String nombre, String direccion, String telefono, Time horaApertura, Time horaCierre, int capacidad) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -21,7 +21,7 @@ public class Sucursal {
         this.capacidad = capacidad;
     }
     
-    public Sucursal(int id, String nombre, String direccion, int telefono, Time horaApertura, Time horaCierre, int capacidad) {
+    public Sucursal(int id, String nombre, String direccion, String telefono, Time horaApertura, Time horaCierre, int capacidad) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -55,11 +55,11 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

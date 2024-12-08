@@ -5,6 +5,7 @@
 package Tablemodels;
 
 import Modelo.Clases.Ejemplar;
+import Modelo.Clases.Libro;
 import Modelo.Clases.Sucursal;
 import Modelo.ClasesDAO.SucursalDAO;
 import java.sql.SQLException;
@@ -61,6 +62,10 @@ public Object getValueAt(int rowIndex, int columnIndex) {
     return null;
 }
 
+
+    public Ejemplar getEjemplarEnFila(int rowIndex){
+        return listaEjemplares.get(rowIndex);
+    }
 
 
     @Override

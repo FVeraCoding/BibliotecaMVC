@@ -16,11 +16,12 @@ import java.util.logging.Logger;
 public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
     LoginVista login = new LoginVista();
-    
+    Usuario usuarioLogueado;
     
     public PantallaPrincipalSocio(Usuario usuarioLogueado) {
         initComponents();
         System.out.println(usuarioLogueado.toString());
+        this.usuarioLogueado = usuarioLogueado;
         jLabelBienvenida.setText("Bienvenido a la aplicación, "+ usuarioLogueado.getNombreUsuario());
                         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -317,7 +318,7 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
     private void jMenuItemBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarLibroActionPerformed
         try {
-            BuscarLibrosVista buscarLibros = new BuscarLibrosVista();
+            BuscarLibrosVista buscarLibros = new BuscarLibrosVista(this.usuarioLogueado);
             buscarLibros.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(Level.SEVERE, null, ex);

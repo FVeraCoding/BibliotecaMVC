@@ -5,11 +5,15 @@
 package Vista;
 
 import Controlador.Ejemplar.EjemplarController;
+import Controlador.Reservas.ReservasController;
 import Modelo.Clases.Ejemplar;
+import Modelo.Clases.Usuario;
 import Tablemodels.EjemplarTableModel;
-import Tablemodels.LibroTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -20,15 +24,20 @@ public class ReservarEjemplarVista extends javax.swing.JFrame {
 
     private TableRowSorter<EjemplarTableModel> sorter;
     private BuscarLibrosVista vistaLibros;
-    private EjemplarController controlador;
+    private EjemplarController controladorEjemplares;
+    private ReservasController controladorReserva;
+    private Usuario usuarioLogueado;
+    private EjemplarTableModel tableModel;
 
-    public ReservarEjemplarVista(int idLibro, BuscarLibrosVista vistaLibros) throws SQLException {
+    public ReservarEjemplarVista(int idLibro, BuscarLibrosVista vistaLibros, Usuario usuarioLogueado) throws SQLException {
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         this.vistaLibros = vistaLibros;
-        controlador = new EjemplarController(vistaLibros, this);
-        controlador.inicializarTabla();
-        this.jLabelTitulo.setText("Ejemplares de: "+vistaLibros.libroSeleccionado().getTitulo());
+        controladorEjemplares = new EjemplarController(vistaLibros, this);
+        controladorEjemplares.inicializarTabla();
+        controladorReserva = new ReservasController(this);
+        this.jLabelTitulo.setText("Ejemplares de: " + vistaLibros.libroSeleccionado().getTitulo());
+        this.usuarioLogueado = usuarioLogueado;
     }
 
     /**
@@ -43,6 +52,7 @@ public class ReservarEjemplarVista extends javax.swing.JFrame {
         jLabelTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEjemplares = new javax.swing.JTable();
+        jButtonReservar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,18 +72,32 @@ public class ReservarEjemplarVista extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableEjemplares);
 
+        jButtonReservar.setText("Reserva");
+        jButtonReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReservarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jButtonReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,21 +106,60 @@ public class ReservarEjemplarVista extends javax.swing.JFrame {
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonReservar)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservarActionPerformed
+        try {
+            controladorReserva.crearReserva();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservarEjemplarVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonReservarActionPerformed
+
     public void actualizarTabla(ArrayList<Ejemplar> listaEjemplares) throws SQLException {
-        EjemplarTableModel tableModel = new EjemplarTableModel(listaEjemplares);
+        tableModel = new EjemplarTableModel(listaEjemplares);
         jTableEjemplares.setModel(tableModel);
 
         this.sorter = new TableRowSorter<>(tableModel);
         jTableEjemplares.setRowSorter(sorter);
     }
 
+    public Ejemplar ejemplarSeleccionado() {
+        int selectedRow = jTableEjemplares.getSelectedRow();
+
+        if (selectedRow != -1) {
+            // Obtener el libro seleccionado
+            Ejemplar ejemplarSeleccionado = ((EjemplarTableModel) jTableEjemplares.getModel()).getEjemplarEnFila(selectedRow);
+
+            System.out.println(ejemplarSeleccionado.toString());
+
+            return ejemplarSeleccionado;  // Devolver el libro seleccionado
+        } else {
+            // Mostrar un mensaje si no hay libro seleccionado
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un libro primero.");
+            return null;  // Devolver null si no hay libro seleccionado
+        }
+
+    }
+
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public EjemplarTableModel getTableModel() {
+        return tableModel;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonReservar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEjemplares;
