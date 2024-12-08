@@ -32,7 +32,7 @@ public class ReservaDAO {
     }
     
     public ArrayList<Reserva> read(int clave) throws SQLException{
-        PreparedStatement pSentencia = con.prepareStatement("SELECT * FROM USUARIO WHERE id_socio = ? ");
+        PreparedStatement pSentencia = con.prepareStatement("SELECT * FROM Reserva WHERE id_socio = ? ");
         pSentencia.setInt(1, clave);
         
         ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
@@ -59,7 +59,7 @@ public class ReservaDAO {
     }
     
     public void update(Reserva reserva) throws SQLException{
-        PreparedStatement pSentencia = con.prepareStatement("UPDATE Usuario set id_socio = ?, id_ejemplar = ?, fecha_inicio = ?, fecha_fin = ? WHERE id_socio = ?");
+        PreparedStatement pSentencia = con.prepareStatement("UPDATE Reserva set id_socio = ?, id_ejemplar = ?, fecha_inicio = ?, fecha_fin = ? WHERE id_socio = ?");
         
         pSentencia.setInt(1, reserva.getIdSocio());
         pSentencia.setInt(2, reserva.getIdEjemplar());

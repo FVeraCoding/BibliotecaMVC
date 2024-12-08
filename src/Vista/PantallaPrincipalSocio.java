@@ -61,8 +61,10 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         jMenuLibros = new javax.swing.JMenu();
         jMenuItemBuscarLibro = new javax.swing.JMenuItem();
         jMenuEventos = new javax.swing.JMenu();
+        jMenuItemEventosBuscar = new javax.swing.JMenuItem();
         jMenuClub = new javax.swing.JMenu();
         jMenuReservas = new javax.swing.JMenu();
+        jMenuItemVerReservas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -270,12 +272,30 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         jMenuBar1.add(jMenuLibros);
 
         jMenuEventos.setText("Eventos");
+
+        jMenuItemEventosBuscar.setText("Buscar");
+        jMenuItemEventosBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEventosBuscarActionPerformed(evt);
+            }
+        });
+        jMenuEventos.add(jMenuItemEventosBuscar);
+
         jMenuBar1.add(jMenuEventos);
 
         jMenuClub.setText("Club de Lectura");
         jMenuBar1.add(jMenuClub);
 
         jMenuReservas.setText("Reservas");
+
+        jMenuItemVerReservas.setText("Ver reservas");
+        jMenuItemVerReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVerReservasActionPerformed(evt);
+            }
+        });
+        jMenuReservas.add(jMenuItemVerReservas);
+
         jMenuBar1.add(jMenuReservas);
 
         setJMenuBar(jMenuBar1);
@@ -325,6 +345,19 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemBuscarLibroActionPerformed
 
+    private void jMenuItemVerReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerReservasActionPerformed
+        try {
+            MisReservasVista reservasVista = new MisReservasVista(usuarioLogueado);
+            reservasVista.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItemVerReservasActionPerformed
+
+    private void jMenuItemEventosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEventosBuscarActionPerformed
+
+    }//GEN-LAST:event_jMenuItemEventosBuscarActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -340,6 +373,8 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuClub;
     private javax.swing.JMenu jMenuEventos;
     private javax.swing.JMenuItem jMenuItemBuscarLibro;
+    private javax.swing.JMenuItem jMenuItemEventosBuscar;
+    private javax.swing.JMenuItem jMenuItemVerReservas;
     private javax.swing.JMenu jMenuLibros;
     private javax.swing.JMenu jMenuReservas;
     private javax.swing.JPanel jPanel1;

@@ -1,7 +1,9 @@
 package Controlador.Reservas;
 
 import Modelo.Clases.Reserva;
+import Modelo.ClasesDAO.EjemplarDAO;
 import Modelo.ClasesDAO.ReservaDAO;
+import Vista.MisReservasVista;
 import Vista.ReservarEjemplarVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,28 +12,42 @@ import javax.swing.JOptionPane;
 public class ReservasController {
 
     ReservaDAO reDAO;
-    ReservarEjemplarVista vista;
+    EjemplarDAO ejeDAO;
+    ReservarEjemplarVista vistaEjemplares;
+    MisReservasVista vistaReservas;
 
-    public ReservasController(ReservarEjemplarVista vista) throws SQLException {
+    public ReservasController(ReservarEjemplarVista vistaEjemplares, MisReservasVista vistaReservas) throws SQLException {
         reDAO = new ReservaDAO();
-        this.vista = vista;
+        ejeDAO = new EjemplarDAO();
+        this.vistaEjemplares = vistaEjemplares;
+        this.vistaReservas = vistaReservas;
     }
 
     public void crearReserva() throws SQLException {
-        int idSocio = vista.getUsuarioLogueado().getId();
+        int idSocio = vistaEjemplares.getUsuarioLogueado().getId();
         System.out.println(idSocio);
-        int idEjemplar = vista.ejemplarSeleccionado().getId();
+        int idEjemplar = vistaEjemplares.ejemplarSeleccionado().getId();
+        
+        System.out.println(vistaEjemplares.ejemplarSeleccionado().toString());
 
-        if (!vista.ejemplarSeleccionado().getEstado().equals("Reservado")) {
+        if (!vistaEjemplares.ejemplarSeleccionado().getEstado().equals("Reservado")) {
             reDAO.create(idSocio, idEjemplar);
 
-            vista.ejemplarSeleccionado().setEstado("Reservado");
-            vista.getTableModel().fireTableDataChanged();
-            JOptionPane.showMessageDialog(vista, "Reserva realizada con éxito.");
+            vistaEjemplares.ejemplarSeleccionado().setEstado("Reservado");
+            ejeDAO.update(vistaEjemplares.ejemplarSeleccionado());
+            
+            vistaEjemplares.getTableModel().fireTableDataChanged();
+            JOptionPane.showMessageDialog(vistaEjemplares, "Reserva realizada con éxito.");
         } else {
-            JOptionPane.showMessageDialog(vista, "Este ejemplar ya ha sido reservado.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaEjemplares, "Este ejemplar ya ha sido reservado.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
+    }
+    
+    public void cargarReservasUsuario(int idUsuario) throws SQLException{        
+        
+        ArrayList<Reserva> reservasUsuario = reDAO.read(idUsuario);
+        vistaReservas.actualizarTabla(reservasUsuario);
+        
     }
 
 }

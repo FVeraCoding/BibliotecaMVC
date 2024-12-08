@@ -53,7 +53,7 @@ public class EjemplarDAO {
     }
 
     public void update(Ejemplar ejemplar) throws SQLException {
-        PreparedStatement pSentencia = con.prepareStatement("UPDATE Ejemplar set nombre = ?, direccion = ?, telefono = ?, hora_apertura = ?, hora_cierre = ?, capacidad = ? WHERE id = ?");
+        PreparedStatement pSentencia = con.prepareStatement("UPDATE Ejemplar set estado = ?, id_sucursal = ?, id_libro = ? WHERE id = ?");
 
         pSentencia.setString(1, ejemplar.getEstado());
         pSentencia.setInt(2, ejemplar.getId_sucursal());

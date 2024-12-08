@@ -35,7 +35,7 @@ public class ReservarEjemplarVista extends javax.swing.JFrame {
         this.vistaLibros = vistaLibros;
         controladorEjemplares = new EjemplarController(vistaLibros, this);
         controladorEjemplares.inicializarTabla();
-        controladorReserva = new ReservasController(this);
+        controladorReserva = new ReservasController(this, null);
         this.jLabelTitulo.setText("Ejemplares de: " + vistaLibros.libroSeleccionado().getTitulo());
         this.usuarioLogueado = usuarioLogueado;
     }
