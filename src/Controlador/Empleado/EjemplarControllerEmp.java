@@ -1,20 +1,22 @@
 
-package Controlador;
+package Controlador.Empleado;
 
 import Modelo.Clases.Ejemplar;
 import Modelo.ClasesDAO.EjemplarDAO;
-import Vista.BuscarLibrosVista;
-import Vista.ReservarEjemplarVista;
+import Vista.Empleado.BuscarLibrosVistaEmp;
+import Vista.Empleado.ReservarEjemplarVistaEmp;
+import Vista.Socio.BuscarLibrosVista;
+import Vista.Socio.ReservarEjemplarVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class EjemplarController {
+public class EjemplarControllerEmp {
     EjemplarDAO eDAO;
-    BuscarLibrosVista vistaLibro;
-    ReservarEjemplarVista vistaEjemplar;
+    BuscarLibrosVistaEmp vistaLibro;
+    ReservarEjemplarVistaEmp vistaEjemplar;
 
-    public EjemplarController(BuscarLibrosVista vistaLibros, ReservarEjemplarVista vistaEjemplar) throws SQLException {
+    public EjemplarControllerEmp(BuscarLibrosVistaEmp vistaLibros, ReservarEjemplarVistaEmp vistaEjemplar) throws SQLException {
         this.eDAO = new EjemplarDAO();
         this.vistaLibro = vistaLibros;
         this.vistaEjemplar = vistaEjemplar;

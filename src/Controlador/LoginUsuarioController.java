@@ -23,7 +23,7 @@ public class LoginUsuarioController {
                 loginVista.abrirPantallaSocio(this.usuarioLogueado());
                 break;
             case 2:
-                loginVista.abrirPantallaEmpleado();
+                loginVista.abrirPantallaEmpleado(this.usuarioLogueado());
                 break;
             case 3:
                 loginVista.abrirPantallaAdministrador();

@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Vista.Empleado.PantallaPrincipalEmpleado;
+import Vista.Socio.PantallaPrincipalSocio;
 import Controlador.LoginUsuarioController;
 import Modelo.Clases.Usuario;
 import java.sql.SQLException;
@@ -131,8 +133,8 @@ public class LoginVista extends javax.swing.JFrame {
         pantalla.setVisible(true);
     }
 
-    public void abrirPantallaEmpleado() {
-        PantallaPrincipalEmpleado pantalla = new PantallaPrincipalEmpleado();
+    public void abrirPantallaEmpleado(Usuario usuario) {
+        PantallaPrincipalEmpleado pantalla = new PantallaPrincipalEmpleado(usuario);
         pantalla.setVisible(true);
     }
 

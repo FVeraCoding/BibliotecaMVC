@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package Vista.Empleado;
 
-import Controlador.LibrosController;
+import Controlador.Empleado.LibrosControllerEmp;
+import Vista.Socio.*;
 import Modelo.Clases.Libro;
 import Modelo.Clases.Usuario;
 import Modelo.TableModels.LibroTableModel;
@@ -19,13 +20,13 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Fernando
  */
-public class BuscarLibrosVista extends javax.swing.JFrame {
+public class BuscarLibrosVistaEmp extends javax.swing.JFrame {
 
     private TableRowSorter<LibroTableModel> sorter;
-    LibrosController controlador = new LibrosController(this);
+    LibrosControllerEmp controlador = new LibrosControllerEmp(this);
     Usuario usuarioLogueado;
 
-    public BuscarLibrosVista(Usuario usuarioLogueado) throws SQLException {
+    public BuscarLibrosVistaEmp(Usuario usuarioLogueado) throws SQLException {
         initComponents();
         controlador.inicializarTabla();
         this.usuarioLogueado = usuarioLogueado;
@@ -48,7 +49,8 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
-        jButtonReserva = new javax.swing.JButton();
+        jButtonAñadirLibro = new javax.swing.JButton();
+        jButtonEliminarLibro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,10 +92,17 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
             }
         });
 
-        jButtonReserva.setText("Reserva");
-        jButtonReserva.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAñadirLibro.setText("Añadir Libro");
+        jButtonAñadirLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReservaActionPerformed(evt);
+                jButtonAñadirLibroActionPerformed(evt);
+            }
+        });
+
+        jButtonEliminarLibro.setText("Eliminar Libro");
+        jButtonEliminarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarLibroActionPerformed(evt);
             }
         });
 
@@ -109,9 +118,6 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
                                 .addGap(220, 220, 220)
                                 .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonReserva))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -123,6 +129,12 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAñadirLibro)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEliminarLibro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +149,9 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonReserva)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAñadirLibro)
+                    .addComponent(jButtonEliminarLibro))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -145,7 +159,7 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBusquedaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldBusquedaActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -162,16 +176,23 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButtonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservaActionPerformed
-
-        libroSeleccionado();
+    private void jButtonEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarLibroActionPerformed
         try {
-            ReservarEjemplarVista ejemplarVista = new ReservarEjemplarVista(libroSeleccionado().getId(), this, this.usuarioLogueado);
-            ejemplarVista.setVisible(true);
+            controlador.eliminarLibroSeleccionado();
+            controlador.inicializarTabla();
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarLibrosVista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarLibrosVistaEmp.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonReservaActionPerformed
+    }//GEN-LAST:event_jButtonEliminarLibroActionPerformed
+
+    private void jButtonAñadirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirLibroActionPerformed
+        try {
+            AddLibroVista addLibro = new AddLibroVista(this);
+            addLibro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarLibrosVistaEmp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonAñadirLibroActionPerformed
 
     public Libro libroSeleccionado() {
     int selectedRow = jTableLibros.getSelectedRow();
@@ -200,8 +221,9 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAñadirLibro;
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonReserva;
+    private javax.swing.JButton jButtonEliminarLibro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

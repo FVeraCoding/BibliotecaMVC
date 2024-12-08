@@ -1,8 +1,8 @@
-package Controlador;
+package Controlador.Socio;
 
 import Modelo.Clases.AsistenciaEventoSocio;
 import Modelo.ClasesDAO.AsistenciaEventoSocioDAO;
-import Vista.EventosVista;
+import Vista.Socio.EventosVista;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.SQLIntegrityConstraintViolationException;

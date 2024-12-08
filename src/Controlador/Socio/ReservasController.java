@@ -1,10 +1,10 @@
-package Controlador;
+package Controlador.Socio;
 
 import Modelo.Clases.Reserva;
 import Modelo.ClasesDAO.EjemplarDAO;
 import Modelo.ClasesDAO.ReservaDAO;
-import Vista.MisReservasVista;
-import Vista.ReservarEjemplarVista;
+import Vista.Socio.MisReservasVista;
+import Vista.Socio.ReservarEjemplarVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

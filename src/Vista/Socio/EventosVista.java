@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package Vista.Socio;
 
-import Controlador.AsistenciaEventoSocioController;
-import Controlador.EventosController;
+import Controlador.Socio.AsistenciaEventoSocioController;
+import Controlador.Socio.EventosController;
 import Modelo.Clases.Evento;
 import Modelo.Clases.Usuario;
 import Modelo.TableModels.EventoTableModel;

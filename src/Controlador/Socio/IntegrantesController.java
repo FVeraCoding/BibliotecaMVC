@@ -1,12 +1,12 @@
 
-package Controlador;
+package Controlador.Socio;
 
 import Modelo.Clases.Club;
 import Modelo.Clases.Socio;
 import Modelo.ClasesDAO.ClubDAO;
 import Modelo.ClasesDAO.SocioDAO;
-import Vista.ClubVista;
-import Vista.IntegrantesClubVista;
+import Vista.Socio.ClubVista;
+import Vista.Socio.IntegrantesClubVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

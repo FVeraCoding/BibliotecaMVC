@@ -1,9 +1,9 @@
 
-package Controlador;
+package Controlador.Socio;
 
 import Modelo.Clases.Evento;
 import Modelo.ClasesDAO.EventoDAO;
-import Vista.EventosVista;
+import Vista.Socio.EventosVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

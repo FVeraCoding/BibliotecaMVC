@@ -1,9 +1,9 @@
 
-package Controlador;
+package Controlador.Socio;
 
 import Modelo.Clases.Libro;
 import Modelo.ClasesDAO.LibroDAO;
-import Vista.BuscarLibrosVista;
+import Vista.Socio.BuscarLibrosVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

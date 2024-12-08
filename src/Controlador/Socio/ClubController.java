@@ -1,10 +1,10 @@
 
-package Controlador;
+package Controlador.Socio;
 
 import Modelo.Clases.Club;
 import Modelo.ClasesDAO.ClubDAO;
 import Modelo.ClasesDAO.SocioDAO;
-import Vista.ClubVista;
+import Vista.Socio.ClubVista;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
