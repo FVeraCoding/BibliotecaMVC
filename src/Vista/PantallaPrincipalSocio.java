@@ -355,7 +355,12 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemVerReservasActionPerformed
 
     private void jMenuItemEventosBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEventosBuscarActionPerformed
-
+        try {
+            EventosVista eventos = new EventosVista(this.usuarioLogueado);
+            eventos.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItemEventosBuscarActionPerformed
 
     

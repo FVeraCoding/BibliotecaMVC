@@ -4,11 +4,11 @@
  */
 package Vista;
 
-import Controlador.Ejemplar.EjemplarController;
-import Controlador.Reservas.ReservasController;
+import Controlador.EjemplarController;
+import Controlador.ReservasController;
 import Modelo.Clases.Ejemplar;
 import Modelo.Clases.Usuario;
-import Tablemodels.EjemplarTableModel;
+import Modelo.TableModels.EjemplarTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

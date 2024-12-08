@@ -1,4 +1,4 @@
-package Controlador.Login;
+package Controlador;
 
 import Modelo.Clases.Usuario;
 import Modelo.LoginUsuario.LoginUsuarioModelo;

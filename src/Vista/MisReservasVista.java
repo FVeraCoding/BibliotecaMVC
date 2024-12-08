@@ -4,10 +4,10 @@
  */
 package Vista;
 
-import Controlador.Reservas.ReservasController;
+import Controlador.ReservasController;
 import Modelo.Clases.Reserva;
 import Modelo.Clases.Usuario;
-import Tablemodels.ReservaTableModel;
+import Modelo.TableModels.ReservaTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.table.TableRowSorter;

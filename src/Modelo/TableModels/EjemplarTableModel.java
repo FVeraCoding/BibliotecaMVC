@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Tablemodels;
+package Modelo.TableModels;
 
 import Modelo.Clases.Ejemplar;
-import Modelo.Clases.Libro;
 import Modelo.Clases.Sucursal;
 import Modelo.ClasesDAO.SucursalDAO;
 import java.sql.SQLException;

@@ -17,14 +17,13 @@ public class EventoDAO {
     }
 
     public boolean create(Evento evento) throws SQLException {
-        PreparedStatement pSentencia = con.prepareStatement("INSERT INTO Evento(nombre, descripcion, fecha, capacidad, id_empleado_organizador, id_sucursal) VALUES (?, ?, ?, ?, ?, ?)");
+        PreparedStatement pSentencia = con.prepareStatement("INSERT INTO Evento(nombre, descripcion, fecha,  id_empleado_organizador, id_sucursal) VALUES (?, ?, ?, ?, ?)");
 
         pSentencia.setString(1, evento.getNombre());
         pSentencia.setString(2, evento.getDescripcion());
         pSentencia.setTimestamp(3, Timestamp.valueOf(evento.getFecha()));
-        pSentencia.setInt(4, evento.getCapacidad());
-        pSentencia.setInt(5, evento.getIdEmpleadoOrganizador());
-        pSentencia.setInt(6, evento.getIdSucursal());
+        pSentencia.setInt(4, evento.getIdEmpleadoOrganizador());
+        pSentencia.setInt(5, evento.getIdSucursal());
 
         int resultado = pSentencia.executeUpdate();
 
@@ -40,7 +39,6 @@ public class EventoDAO {
         String nombre = "";
         String descripcion = "";
         LocalDateTime fecha = null;
-        int capacidad = 0;
         int idEmpleadoOrganizador = 0;
         int idSucursal = 0;
 
@@ -53,26 +51,24 @@ public class EventoDAO {
             nombre = rs.getString("nombre");
             descripcion = rs.getString("descripcion");
             fecha = rs.getTimestamp("fecha").toLocalDateTime();
-            capacidad = rs.getInt("capacidad");
             idEmpleadoOrganizador = rs.getInt("id_empleado_organizador");
             idSucursal = rs.getInt("id_sucursal");
 
         }
 
-        evento = new Evento(id, nombre, descripcion, fecha, capacidad, idEmpleadoOrganizador, idSucursal);
+        evento = new Evento(id, nombre, descripcion, fecha, idEmpleadoOrganizador, idSucursal);
         return evento;
     }
 
     public void update(Evento evento) throws SQLException {
-        PreparedStatement pSentencia = con.prepareStatement("UPDATE Evento set nombre = ?, descripcion = ?, fecha= ?, capacidad= ?, id_empleado_organizador= ?, id_sucursal= ? WHERE id = ?");
+        PreparedStatement pSentencia = con.prepareStatement("UPDATE Evento set nombre = ?, descripcion = ?, fecha= ?, id_empleado_organizador= ?, id_sucursal= ? WHERE id = ?");
 
         pSentencia.setString(1, evento.getNombre());
         pSentencia.setString(2, evento.getDescripcion());
         pSentencia.setTimestamp(3, Timestamp.valueOf(evento.getFecha()));
-        pSentencia.setInt(4, evento.getCapacidad());
-        pSentencia.setInt(5, evento.getIdEmpleadoOrganizador());
-        pSentencia.setInt(6, evento.getIdSucursal());
-        pSentencia.setInt(7, evento.getId());
+        pSentencia.setInt(4, evento.getIdEmpleadoOrganizador());
+        pSentencia.setInt(5, evento.getIdSucursal());
+        pSentencia.setInt(6, evento.getId());
 
         pSentencia.executeUpdate();
     }
@@ -93,7 +89,6 @@ public class EventoDAO {
         String nombre = "";
         String descripcion = "";
         LocalDateTime fecha = null;
-        int capacidad = 0;
         int idEmpleadoOrganizador = 0;
         int idSucursal = 0;
 
@@ -104,10 +99,9 @@ public class EventoDAO {
             nombre = rs.getString("nombre");
             descripcion = rs.getString("descripcion");
             fecha = rs.getTimestamp("fecha").toLocalDateTime();
-            capacidad = rs.getInt("capacidad");
             idEmpleadoOrganizador = rs.getInt("id_empleado_organizador");
             idSucursal = rs.getInt("id_sucursal");
-            evento = new Evento(id, nombre, descripcion, fecha, capacidad, idEmpleadoOrganizador, idSucursal);
+            evento = new Evento(id, nombre, descripcion, fecha, idEmpleadoOrganizador, idSucursal);
             listaEventos.add(evento);
         }
 

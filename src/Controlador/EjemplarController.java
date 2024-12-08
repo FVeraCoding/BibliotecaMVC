@@ -1,5 +1,5 @@
 
-package Controlador.Ejemplar;
+package Controlador;
 
 import Modelo.Clases.Ejemplar;
 import Modelo.ClasesDAO.EjemplarDAO;

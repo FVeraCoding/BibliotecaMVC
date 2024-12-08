@@ -9,25 +9,22 @@ public class Evento {
     String nombre;
     String descripcion;
     LocalDateTime fecha;
-    int capacidad;
     int idEmpleadoOrganizador;
     int idSucursal;
 
-    public Evento(String nombre, String descripcion, LocalDateTime fecha, int capacidad, int idEmpleadoOrganizador, int idSucursal) {
+    public Evento(String nombre, String descripcion, LocalDateTime fecha, int idEmpleadoOrganizador, int idSucursal) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
-        this.capacidad = capacidad;
         this.idEmpleadoOrganizador = idEmpleadoOrganizador;
         this.idSucursal = idSucursal;
     }
 
-    public Evento(int id, String nombre, String descripcion, LocalDateTime fecha, int capacidad, int idEmpleadoOrganizador, int idSucursal) {
+    public Evento(int id, String nombre, String descripcion, LocalDateTime fecha, int idEmpleadoOrganizador, int idSucursal) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
-        this.capacidad = capacidad;
         this.idEmpleadoOrganizador = idEmpleadoOrganizador;
         this.idSucursal = idSucursal;
     }
@@ -64,13 +61,6 @@ public class Evento {
         this.fecha = fecha;
     }
 
-    public int getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
 
     public int getIdEmpleadoOrganizador() {
         return idEmpleadoOrganizador;
@@ -90,7 +80,7 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha + ", capacidad=" + capacidad + ", idEmpleadoOrganizador=" + idEmpleadoOrganizador + ", idSucursal=" + idSucursal + '}';
+        return "Evento{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha +  ", idEmpleadoOrganizador=" + idEmpleadoOrganizador + ", idSucursal=" + idSucursal + '}';
     }    
     
 }

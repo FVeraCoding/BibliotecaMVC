@@ -1,4 +1,4 @@
-package Controlador.Reservas;
+package Controlador;
 
 import Modelo.Clases.Reserva;
 import Modelo.ClasesDAO.EjemplarDAO;

@@ -4,10 +4,10 @@
  */
 package Vista;
 
-import Controlador.Libros.LibrosController;
+import Controlador.LibrosController;
 import Modelo.Clases.Libro;
 import Modelo.Clases.Usuario;
-import Tablemodels.LibroTableModel;
+import Modelo.TableModels.LibroTableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

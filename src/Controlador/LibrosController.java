@@ -1,5 +1,5 @@
 
-package Controlador.Libros;
+package Controlador;
 
 import Modelo.Clases.Libro;
 import Modelo.ClasesDAO.LibroDAO;
