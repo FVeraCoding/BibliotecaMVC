@@ -25,7 +25,7 @@ Asegúrate de tener [Java](https://www.oracle.com/java/technologies/javase-jdk11
 
 ```bash
 # Clona este repositorio
-git clone https://github.com/usuario/bibliotecamvc.git
+git clone https://github.com/fveracoding/bibliotecamvc.git
 
 # Entra en el directorio del proyecto
 cd bibliotecamvc
