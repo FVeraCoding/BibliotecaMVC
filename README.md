@@ -1,4 +1,4 @@
-# Gestión de Concesionario de Coches
+# Gestión de Biblioteca Oliveria
 
 **Descripción**: Aplicación para la gestión de la Biblioteca Oliveria de Gijón.
 
