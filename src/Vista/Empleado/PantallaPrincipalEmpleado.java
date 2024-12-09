@@ -25,7 +25,7 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         initComponents();
         this.usuarioLogueado = usuario;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        this.setImageLabel(jLabelLogo, "/logo.png");
+        this.setImageLabel(jLabelLogo, "/img/logo.png");
         this.setFondoPantalla();
         this.setResizable(false);
     }
@@ -60,7 +60,7 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
     
     private void setFondoPantalla() {
     // Carga la imagen de fondo desde el archivo
-    ImageIcon fondo = new ImageIcon(getClass().getResource("/fondo.jpg"));
+    ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondo.jpg"));
 
     // Obtenemos la imagen original
     Image img = fondo.getImage();

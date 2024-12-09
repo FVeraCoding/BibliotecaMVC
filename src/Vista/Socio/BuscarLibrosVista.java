@@ -39,7 +39,7 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
     
     private void setFondoPantalla() {
     // Carga la imagen de fondo desde el archivo
-    ImageIcon fondo = new ImageIcon(getClass().getResource("/fondo.jpg"));
+    ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondo.jpg"));
 
     // Obtenemos la imagen original
     Image img = fondo.getImage();

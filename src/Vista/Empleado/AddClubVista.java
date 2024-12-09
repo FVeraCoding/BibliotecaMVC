@@ -41,7 +41,7 @@ public class AddClubVista extends javax.swing.JFrame {
     
     private void setFondoPantalla() {
     // Carga la imagen de fondo desde el archivo
-    ImageIcon fondo = new ImageIcon(getClass().getResource("/fondo.jpg"));
+    ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondo.jpg"));
 
     // Obtenemos la imagen original
     Image img = fondo.getImage();
@@ -80,11 +80,8 @@ public class AddClubVista extends javax.swing.JFrame {
         jTextFieldNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldDescripcion = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextFieldFecha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButtonAñadir = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jComboBoxOrganizadorID = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,8 +93,6 @@ public class AddClubVista extends javax.swing.JFrame {
 
         jLabel3.setText("Descripcion");
 
-        jLabel4.setText("Fecha");
-
         jLabel5.setText("Empleado Gestor (id)");
 
         jButtonAñadir.setText("Añadir");
@@ -106,8 +101,6 @@ public class AddClubVista extends javax.swing.JFrame {
                 jButtonAñadirActionPerformed(evt);
             }
         });
-
-        jLabel7.setText("(yyyy-mm-dd)");
 
         jComboBoxOrganizadorID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,28 +113,23 @@ public class AddClubVista extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonAñadir)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jComboBoxOrganizadorID, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel7)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(30, 30, 30))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxOrganizadorID, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -162,18 +150,12 @@ public class AddClubVista extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBoxOrganizadorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                    .addComponent(jComboBoxOrganizadorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(39, 39, 39)
                 .addComponent(jButtonAñadir)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,10 +181,12 @@ public class AddClubVista extends javax.swing.JFrame {
         try {
             String nombre = jTextFieldNombre.getText();
             String descripcion = jTextFieldDescripcion.getText();
-            String fecha = jTextFieldFecha.getText();
+            Date fecha = new Date();
+            
+            java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
             int organizadorID = (Integer) jComboBoxOrganizadorID.getSelectedItem();
 
-            if (nombre.isEmpty() || descripcion.isEmpty() || fecha.isEmpty()) {
+            if (nombre.isEmpty() || descripcion.isEmpty()) {
                 JOptionPane.showMessageDialog(null,
                         "Todos los campos deben estar completos.",
                         "Error de Validación",
@@ -210,17 +194,10 @@ public class AddClubVista extends javax.swing.JFrame {
                 return null;
             }
 
-            if (!fecha.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                JOptionPane.showMessageDialog(null,
-                        "La fecha debe estar en formato 'yyyy-MM-dd'.",
-                        "Error de Formato",
-                        JOptionPane.ERROR_MESSAGE);
-                return null;
-            }
+            
 
-            Date year = convertirTextoADate(fecha);
 
-            return new Club(nombre, descripcion, year, organizadorID);
+            return new Club(nombre, descripcion, fechaSQL, organizadorID);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,
@@ -244,11 +221,8 @@ public class AddClubVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextFieldDescripcion;
-    private javax.swing.JTextField jTextFieldFecha;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
