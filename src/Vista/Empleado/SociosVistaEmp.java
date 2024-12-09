@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista.Socio;
+package Vista.Empleado;
 
-import Controlador.Socio.AsistenciaEventoSocioController;
-import Controlador.Socio.EventosController;
-import Modelo.Clases.Evento;
+import Controlador.Empleado.SocioControllerEmp;
+import Modelo.Clases.Socio;
 import Modelo.Clases.Usuario;
-import Modelo.TableModels.EventoTableModel;
+import Modelo.TableModels.SocioTableModel;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,23 +18,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author Fernando
- */
-public class EventosVista extends javax.swing.JFrame {
+public class SociosVistaEmp extends javax.swing.JFrame {
 
-    private TableRowSorter<EventoTableModel> sorter;
-    private Usuario usuarioLogueado;
-    private EventosController controladorEvento;
-    private AsistenciaEventoSocioController controladorAsistencia;
+    private TableRowSorter<SocioTableModel> sorter;
+    SocioControllerEmp controlador;
+    Usuario usuarioLogueado;
 
-    public EventosVista(Usuario usuarioLogueado) throws SQLException {
+    public SociosVistaEmp(Usuario usuarioLogueado) throws SQLException {
         initComponents();
         this.usuarioLogueado = usuarioLogueado;
-        controladorEvento = new EventosController(this);
-        controladorAsistencia = new AsistenciaEventoSocioController(this);
-        controladorEvento.inicializarTabla();
+        this.controlador = new SocioControllerEmp(this);
+        controlador.inicializarTabla();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         this.setFondoPantalla();
         this.setResizable(false);
@@ -68,14 +61,6 @@ public class EventosVista extends javax.swing.JFrame {
 }
 
 
-    public void actualizarTabla(ArrayList<Evento> listaEventos) throws SQLException {
-        EventoTableModel tableModel = new EventoTableModel(listaEventos);
-        jTable1.setModel(tableModel);
-
-        this.sorter = new TableRowSorter<>(tableModel);
-        jTable1.setRowSorter(sorter);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,19 +72,19 @@ public class EventosVista extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSocios = new javax.swing.JTable();
+        jButtonAñadir = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldBusqueda = new javax.swing.JTextField();
-        jButtonBuscar = new javax.swing.JButton();
-        jButtonAsistir = new javax.swing.JButton();
-        jButtonRetirarAsistencia = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Eventos");
+        jLabel1.setText("Lista de Socios");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,28 +95,28 @@ public class EventosVista extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableSocios);
 
-        jLabel2.setText("Introduce el nombre");
-
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAñadir.setText("Añadir Socio");
+        jButtonAñadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
+                jButtonAñadirActionPerformed(evt);
             }
         });
 
-        jButtonAsistir.setText("Asistir");
-        jButtonAsistir.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminar.setText("Eliminar Socio");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAsistirActionPerformed(evt);
+                jButtonEliminarActionPerformed(evt);
             }
         });
 
-        jButtonRetirarAsistencia.setText("Retirar asistencia");
-        jButtonRetirarAsistencia.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("Introduce el nombre:");
+
+        jButton3.setText("Buscar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRetirarAsistenciaActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -139,103 +124,111 @@ public class EventosVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(271, 271, 271)
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonAñadir)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAsistir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRetirarAsistencia)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonBuscar))
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAsistir)
-                    .addComponent(jButtonRetirarAsistencia))
-                .addContainerGap(9, Short.MAX_VALUE))
+                    .addComponent(jButtonAñadir)
+                    .addComponent(jButtonEliminar))
+                .addGap(11, 11, 11))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String textoBusqueda = jTextFieldBusqueda.getText();
 
         if (sorter != null) {
             if (textoBusqueda.isEmpty()) {
                 sorter.setRowFilter(null);
             } else {
-                sorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + textoBusqueda, 0));
+                sorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + textoBusqueda, 1));
             }
         }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
-
-    private void jButtonAsistirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAsistirActionPerformed
+    private void jButtonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirActionPerformed
         try {
-            controladorAsistencia.crearAsistencia();
+            AddSocioVista addSocio = new AddSocioVista(this);
+            addSocio.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(EventosVista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SociosVistaEmp.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonAsistirActionPerformed
+    }//GEN-LAST:event_jButtonAñadirActionPerformed
 
-    private void jButtonRetirarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetirarAsistenciaActionPerformed
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         try {
-            controladorAsistencia.eliminarAsistencia();
+            controlador.eliminarSocioSeleccionado();
+            controlador.inicializarTabla();
         } catch (SQLException ex) {
-            Logger.getLogger(EventosVista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarLibrosVistaEmp.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonRetirarAsistenciaActionPerformed
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
-    public Evento eventoSeleccionado() {
-        int selectedRow = jTable1.getSelectedRow();
+    public void actualizarTabla(ArrayList<Socio> listaSocios) throws SQLException {
+        SocioTableModel tableModel = new SocioTableModel(listaSocios);
+        jTableSocios.setModel(tableModel);
+
+        this.sorter = new TableRowSorter<>(tableModel);
+        jTableSocios.setRowSorter(sorter);
+    }
+
+    public Socio socioSeleccionado() {
+        int selectedRow = jTableSocios.getSelectedRow();
 
         if (selectedRow != -1) {
-            Evento eventoSeleccionado = ((EventoTableModel) jTable1.getModel()).getEventoEnFila(selectedRow);
+            Socio socioSeleccionado = ((SocioTableModel) jTableSocios.getModel()).getSocioEnFila(selectedRow);
 
-            return eventoSeleccionado;
+            return socioSeleccionado;
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor, selecciona un evento primero.");
+
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un socio primero.");
             return null;
         }
     }
 
-    public Usuario getUsuarioLogueado() {
-        return usuarioLogueado;
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAsistir;
-    private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonRetirarAsistencia;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAñadir;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSocios;
     private javax.swing.JTextField jTextFieldBusqueda;
     // End of variables declaration//GEN-END:variables
 }

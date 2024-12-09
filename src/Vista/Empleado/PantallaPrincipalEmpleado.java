@@ -5,9 +5,13 @@
 package Vista.Empleado;
 
 import Modelo.Clases.Usuario;
+import java.awt.Image;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,8 +25,65 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         initComponents();
         this.usuarioLogueado = usuario;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
+        this.setImageLabel(jLabelLogo, "/logo.png");
+        this.setFondoPantalla();
+        this.setResizable(false);
     }
+    
+   private void setImageLabel(JLabel label, String ruta) {
+    try {
+        // Carga de la imagen desde la ruta proporcionada
+        ImageIcon imagen = new ImageIcon(getClass().getResource(ruta));
+        
+        // Verificar si la imagen se ha cargado correctamente
+        if (imagen.getIconWidth() == -1) {
+            System.out.println("No se pudo cargar la imagen desde la ruta: " + ruta);
+            return; // Salimos si la imagen no se cargó
+        }
+
+        // Obtener la imagen original
+        Image img = imagen.getImage();
+
+        // Redimensionar la imagen para que se ajuste al tamaño del JLabel
+        Image imagenRedimensionada = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+
+        // Crear un nuevo ImageIcon con la imagen redimensionada
+        ImageIcon imagenRedimensionada2 = new ImageIcon(imagenRedimensionada);
+
+        // Establecer el icono de la etiqueta
+        label.setIcon(imagenRedimensionada2);
+    } catch (Exception e) {
+        e.printStackTrace(); // Imprimir cualquier excepción que ocurra
+    }
+}
+
+    
+    private void setFondoPantalla() {
+    // Carga la imagen de fondo desde el archivo
+    ImageIcon fondo = new ImageIcon(getClass().getResource("/fondo.jpg"));
+
+    // Obtenemos la imagen original
+    Image img = fondo.getImage();
+
+    // Redimensionamos la imagen para que se ajuste al tamaño del JFrame manteniendo la proporción
+    Image fondoRedimensionado = img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+
+    // Creamos un nuevo ImageIcon con la imagen redimensionada
+    ImageIcon fondoRedimensionadoIcon = new ImageIcon(fondoRedimensionado);
+
+    // Creamos un JLabel que contiene la imagen redimensionada
+    JLabel fondoLabel = new JLabel(fondoRedimensionadoIcon);
+
+    // Configuramos el JLabel al tamaño del JFrame
+    fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+    // Agregamos el JLabel al JPanel del JFrame
+    this.getContentPane().add(fondoLabel);
+
+    // Para que los otros componentes aparezcan encima del fondo, ajustamos el layout
+    this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +95,9 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelLogo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemVerLibros = new javax.swing.JMenuItem();
@@ -46,7 +110,14 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Bienvenido NombreUsuario");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Bienvenido/a");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setText("Al panel del empleado de ");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Biblioteca Oliveria");
 
         jMenu1.setText("Libros");
 
@@ -87,6 +158,11 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         jMenu4.setText("Socios");
 
         jMenuItem3.setText("Ver");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem3);
 
         jMenuBar1.add(jMenu4);
@@ -98,16 +174,36 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jLabel1)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,9 +237,21 @@ public class PantallaPrincipalEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemClubsActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        try {
+            SociosVistaEmp vistaSocios = new SociosVistaEmp(usuarioLogueado);
+            vistaSocios.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaPrincipalEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

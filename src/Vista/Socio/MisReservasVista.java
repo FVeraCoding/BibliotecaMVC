@@ -8,8 +8,11 @@ import Controlador.Socio.ReservasController;
 import Modelo.Clases.Reserva;
 import Modelo.Clases.Usuario;
 import Modelo.TableModels.ReservaTableModel;
+import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -29,7 +32,36 @@ public class MisReservasVista extends javax.swing.JFrame {
         this.usuarioLogueado = usuarioLogueado;
         controlador.cargarReservasUsuario(usuarioLogueado.getId());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.setFondoPantalla();
+        this.setResizable(false);
     }
+    private void setFondoPantalla() {
+    // Carga la imagen de fondo desde el archivo
+    ImageIcon fondo = new ImageIcon(getClass().getResource("/fondo.jpg"));
+
+    // Obtenemos la imagen original
+    Image img = fondo.getImage();
+
+    // Redimensionamos la imagen para que se ajuste al tamaño del JFrame manteniendo la proporción
+    Image fondoRedimensionado = img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+
+    // Creamos un nuevo ImageIcon con la imagen redimensionada
+    ImageIcon fondoRedimensionadoIcon = new ImageIcon(fondoRedimensionado);
+
+    // Creamos un JLabel que contiene la imagen redimensionada
+    JLabel fondoLabel = new JLabel(fondoRedimensionadoIcon);
+
+    // Configuramos el JLabel al tamaño del JFrame
+    fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+    // Agregamos el JLabel al JPanel del JFrame
+    this.getContentPane().add(fondoLabel);
+
+    // Para que los otros componentes aparezcan encima del fondo, ajustamos el layout
+    this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
+}
+
+    
 
     public void actualizarTabla(ArrayList<Reserva> listaReserva) throws SQLException {
         tableModel = new ReservaTableModel(listaReserva);
