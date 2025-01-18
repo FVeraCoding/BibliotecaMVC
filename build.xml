@@ -10,6 +10,23 @@
 <project name="BibliotecaMVC" default="default" basedir=".">
     <description>Builds, tests, and runs the project BibliotecaMVC.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <property name="javac.source" value="1.7"/>
+    <property name="javac.target" value="1.7"/>
+    <property name="javac.compiler" value="modern"/>
+
+    <target name="compile" depends="init">
+    <mkdir dir="${build.classes.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${build.classes.dir}" source="${javac.source}" target="${javac.target}">
+        <classpath>
+            <pathelement location="${libs.javac.classpath}"/>
+            
+        </classpath>
+    </javac>
+</target>
+
+
+
     <!--
 
     There exist several targets which are by default empty and which can be 

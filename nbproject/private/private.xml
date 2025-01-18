@@ -3,27 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/PantallaPrincipalSocio.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/ClubVista.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/PantallaPrincipalSocio.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/EventosVistaEmp.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/AddEventoVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/ReservarEjemplarVistaEmp.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/MisReservasVistaEmp.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Controlador/Empleado/ClubControllerEmp.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/IntegrantesClubVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/ReservarEjemplarVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/SociosVistaEmp.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/EventosVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/AddLibroVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/PantallaPrincipalEmpleado.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/MisReservasVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/BuscarLibrosVista.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Socio/MisReservasVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/AddEjemplarVista.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/AddSocioVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/LoginVista.java</file>
+            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/AddSocioVista.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/BuscarLibrosVistaEmp.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/ClubVistaEmp.java</file>
-            <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Controlador/Empleado/AsistenciaEventoEmpleadoControllerEmp.java</file>
             <file>file:/C:/Users/Fernando/Documents/NetBeansProjects/BibliotecaMVC/src/Vista/Empleado/AddClubVista.java</file>
         </group>
     </open-files>

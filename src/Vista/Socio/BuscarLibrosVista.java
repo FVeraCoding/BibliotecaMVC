@@ -79,7 +79,8 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
-        jButtonReserva = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
+        jButtonReserva1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,10 +122,17 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
             }
         });
 
-        jButtonReserva.setText("Reserva");
-        jButtonReserva.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReservaActionPerformed(evt);
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
+        jButtonReserva1.setText("Reserva");
+        jButtonReserva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReserva1ActionPerformed(evt);
             }
         });
 
@@ -135,41 +143,41 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(220, 220, 220)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonReserva))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonBuscar)))
-                        .addGap(0, 142, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonBuscar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonReserva1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonVolver))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel2)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel2)
-                .addGap(54, 54, 54)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jButtonBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonReserva)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolver)
+                    .addComponent(jButtonReserva1))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -193,16 +201,15 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButtonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReservaActionPerformed
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
-        libroSeleccionado();
-        try {
-            ReservarEjemplarVista ejemplarVista = new ReservarEjemplarVista(libroSeleccionado().getId(), this, this.usuarioLogueado);
-            ejemplarVista.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(BuscarLibrosVista.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButtonReservaActionPerformed
+    private void jButtonReserva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReserva1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReserva1ActionPerformed
 
     public Libro libroSeleccionado() {
     int selectedRow = jTableLibros.getSelectedRow();
@@ -232,7 +239,8 @@ public class BuscarLibrosVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonReserva;
+    private javax.swing.JButton jButtonReserva1;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

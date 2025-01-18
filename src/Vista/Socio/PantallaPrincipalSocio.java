@@ -4,6 +4,7 @@
  */
 package Vista.Socio;
 
+import java.sql.*;
 import Modelo.Clases.Usuario;
 import Vista.LoginVista;
 import java.awt.Image;
@@ -12,6 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -94,6 +102,8 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         jLabelBienvenida = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -107,6 +117,12 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         jMenuItemVerClubs = new javax.swing.JMenuItem();
         jMenuReservas = new javax.swing.JMenu();
         jMenuItemVerReservas = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemInformeLibrosDisponibles = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,6 +183,18 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuReservas);
 
+        jMenu2.setText("Informes");
+
+        jMenuItemInformeLibrosDisponibles.setText("Libros Disponibles");
+        jMenuItemInformeLibrosDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemInformeLibrosDisponiblesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemInformeLibrosDisponibles);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,11 +202,8 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,7 +211,11 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jLabelBienvenida)))
-                .addGap(150, 150, 150))
+                .addGap(185, 185, 185))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,8 +227,8 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,17 +271,41 @@ public class PantallaPrincipalSocio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemVerClubsActionPerformed
 
+    private void jMenuItemInformeLibrosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInformeLibrosDisponiblesActionPerformed
+        try {
+            JasperCompileManager.compileReportToFile("src/Informes/InformeLibrosDisponibles/reporteLibrosDisponibles.jrxml");
+            JasperReport report = (JasperReport) JRLoader.loadObjectFromFile("src/Informes/InformeLibrosDisponibles/reporteLibrosDisponibles.jasper");
+            
+            Connection conn = null;
+            try {
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Biblioteca", "root", "1234");
+            } catch (SQLException ex) {
+                Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+                    
+            JasperPrint printer = JasperFillManager.fillReport(report, null, conn);
+            JasperViewer.viewReport(printer);
+        } catch (JRException ex) {
+            Logger.getLogger(PantallaPrincipalSocio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItemInformeLibrosDisponiblesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelBienvenida;
     private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuClub;
     private javax.swing.JMenu jMenuEventos;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemBuscarLibro;
     private javax.swing.JMenuItem jMenuItemEventosBuscar;
+    private javax.swing.JMenuItem jMenuItemInformeLibrosDisponibles;
     private javax.swing.JMenuItem jMenuItemVerClubs;
     private javax.swing.JMenuItem jMenuItemVerReservas;
     private javax.swing.JMenu jMenuLibros;
